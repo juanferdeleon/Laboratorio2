@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Nivel {
+public class Nivel{
 
     private String levelName;
 

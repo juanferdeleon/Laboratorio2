@@ -2,9 +2,11 @@ public class Grado extends Nivel {
 
     private String gradeName;
 
+    public Grado(){}
+
     public Grado(String levelName){
 
-        super.setLevelName(levelName);
+        this.setLevelName(levelName);
 
         System.out.print("Ingrese el nombre del grado: ");
 
