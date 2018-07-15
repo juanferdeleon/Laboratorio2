@@ -1,3 +1,3 @@
-public class Estudiante extends Grado {
+public class Estudiante {
 
 }
