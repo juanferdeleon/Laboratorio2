@@ -4,11 +4,14 @@ public class Laboratorio2 {
     public static void main(String[] args) {
 
         Boolean wantsToContinue = true;
+        Boolean isInArray;
         Nivel[] arrayLevel = new Nivel[10];
-        Grado[] arrayGrado = new Grado[13];
+        Grado[] arrayGrade = new Grado[13];
+        Estudiante[] arrayStudent = new Estudiante[20];
 
         int levelCount = 0;
         int gradeCount = 0;
+        int studentCount = 0;
 
 
         do {
@@ -30,24 +33,60 @@ public class Laboratorio2 {
                     Scanner levelInput2 = new Scanner(System.in);
                     String levelName = levelInput2.next();
 
-                    Boolean isInArray = searchInArray(arrayLevel, levelName);
+                    isInArray = searchInArrayLevel(arrayLevel, levelName);
 
                     if (isInArray){
                         Grado gradoInput = new Grado(levelName);
-                        arrayGrado[gradeCount] = gradoInput;
+                        arrayGrade[gradeCount] = gradoInput;
                         gradeCount++;
                     }else{
                         System.out.println("El nivel ingresado no existe.");
                     }
                     break;
                 case 3:
+                    System.out.print("Ingrese un nivel: ");
+                    Scanner levelInput3 = new Scanner(System.in);
+                    String levelName2 = levelInput3.next();
 
+                    isInArray = searchInArrayLevel(arrayLevel, levelName2);
+
+                    if (isInArray){
+
+                        System.out.print("Ingrese un grado: ");
+                        Scanner gradeInput = new Scanner(System.in);
+                        String gradeName = gradeInput.next();
+
+                        isInArray = searchInArrayGrade(arrayGrade, gradeName);
+
+                        if (isInArray){
+                            Estudiante gradoInput = new Estudiante(levelName2, gradeName);
+                            arrayStudent[studentCount] = gradoInput;
+                            studentCount++;
+                        }else{
+                            System.out.println("El grado ingresado no existe.");
+                        }
+
+                    }else{
+                        System.out.println("El nivel ingresado no existe.");
+                    }
                     break;
                 case 4:
-                    for (int i=0; i<arrayLevel.length; i++){
-                        if (arrayLevel[i] != null){
-                            System.out.println("Nombre de Nivel: " + arrayLevel[i].getLevelName()  + "\n");
+                    System.out.print("Ingrese un nivel: ");
+                    Scanner levelInput4 = new Scanner(System.in);
+                    String levelName3 = levelInput4.next();
+
+                    isInArray = searchInArrayLevel(arrayLevel, levelName3);
+
+                    if (isInArray){
+                        for(int i = 0; i<arrayGrade.length; i++){
+                            if (arrayGrade[i] != null){
+                                if(arrayGrade[i].getLevelName().equals(levelName3)){
+                                    System.out.println("Grado: " + arrayGrade[i].getGrade() + "\n");
+                                }
+                            }
                         }
+                    }else{
+                        System.out.println("El nivel ingresado no existe.");
                     }
                     break;
                 case 5:
@@ -65,7 +104,7 @@ public class Laboratorio2 {
     }
 
     public static String getMenu(){
-        return "Menu:\n" +
+        return "\nMenu:\n" +
                 "\t1. Agregar Nivel\n" +
                 "\t2. Agregar Grado\n" +
                 "\t3. Agregar Estudiante\n" +
@@ -74,12 +113,25 @@ public class Laboratorio2 {
                 "\t6. Salir\n";
     }
 
-    public static Boolean searchInArray(Nivel[] arrayLevel, String NivelIngresado){
+    public static Boolean searchInArrayLevel(Nivel[] arrayLevel, String NivelIngresado){
         Boolean isInArray = false;
 
         for (int i=0; i<arrayLevel.length; i++){
             if (arrayLevel[i] != null) {
                 if (arrayLevel[i].getLevelName().equals(NivelIngresado)) {
+                    isInArray = true;
+                }
+            }
+        }
+        return isInArray;
+    }
+
+    public static Boolean searchInArrayGrade(Grado[] array, String Ingresado){
+        Boolean isInArray = false;
+
+        for (int i=0; i<array.length; i++){
+            if (array[i] != null) {
+                if (array[i].getGrade().equals(Ingresado)) {
                     isInArray = true;
                 }
             }

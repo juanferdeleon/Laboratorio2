@@ -8,7 +8,7 @@ public class Estudiante extends Grado{
     public Estudiante(String levelName, String gradeName){
 
         this.setLevelName(levelName);
-        this.setLevelName(levelName);
+        this.setGrade(gradeName);
 
         System.out.print("Ingrese el nombre del estudiante: ");
 
