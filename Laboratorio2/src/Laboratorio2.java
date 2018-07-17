@@ -90,7 +90,23 @@ public class Laboratorio2 {
                     }
                     break;
                 case 5:
+                    System.out.print("Ingrese un grado: ");
+                    Scanner gradeInput = new Scanner(System.in);
+                    String gradeName = gradeInput.next();
 
+                    isInArray = searchInArrayGrade(arrayGrade, gradeName);
+
+                    if (isInArray){
+                        for(int i = 0; i<arrayStudent.length; i++){
+                            if (arrayStudent[i] != null){
+                                if (arrayStudent[i].getGrade().equals(gradeName)){
+                                    System.out.println(arrayStudent[i]);
+                                }
+                            }
+                        }
+                    }else{
+                        System.out.println("El grado ingresado no existe.");
+                    }
                     break;
                 case 6:
                     wantsToContinue = false;

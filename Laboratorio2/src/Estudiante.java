@@ -38,4 +38,10 @@ public class Estudiante extends Grado{
     public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
+
+    @Override
+    public String toString() {
+        return "\nNombre del Estudiante: " + studentName +
+                "\nID del Estudiante: " + studentId;
+    }
 }
